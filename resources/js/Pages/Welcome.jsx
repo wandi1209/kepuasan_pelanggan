@@ -12,6 +12,9 @@ export default function Welcome({ auth }) {
             icon: "success"
         });
     };
+
+    const imgUrl = `{ asset('img/logo.jpg') }`;
+
     return (
         <>
             <Head title="Welcome" />
@@ -36,6 +39,7 @@ export default function Welcome({ auth }) {
                     )}
                 </div>
                 <div className='fixed top-52'>
+                    <img src={imageUrl} alt="Logo" />
                     <span className='text-2xl font-extrabold text-gray-700'>
                         MASUKAN ANDA SANGAT BERARTI BAGI KAMI
                     </span>
@@ -45,25 +49,25 @@ export default function Welcome({ auth }) {
                 </div>
                 <div className='flex items-center'>
                     <ButtonMasukan 
-                        className='bg-red-600 hover:bg-red-700 hover:scale-105 transition-transform duration-50 mx-2 w-72 flex justify-center shadow-2xl border-b-4 border-r-4 border-black rounded-2xl border-gray-800'
+                        className='bg-red-600 hover:bg-red-700 hover:scale-105 transition-transform duration-50 mx-2 w-72 flex justify-center shadow-2xl border-b-4 border-r-4 border-gray-900 rounded-2xl'
                         onClick={() => handleButtonClick('Tidak Puas')}>
                         <span className='text-5xl'>😠</span>
                         <span className='ml-1'>Tidak Puas</span>
                     </ButtonMasukan>
                     <ButtonMasukan 
-                        className='bg-yellow-600 hover:bg-yellow-700 hover:scale-105 transition-transform duration-50 mx-2 w-72 flex justify-center shadow-2xl border-b-4 border-r-4 border-black rounded-2xl border-gray-800'
+                        className='bg-yellow-600 hover:bg-yellow-700 hover:scale-105 transition-transform duration-50 mx-2 w-72 flex justify-center shadow-2xl border-b-4 border-r-4 border-gray-900 rounded-2xl'
                         onClick={() => handleButtonClick('Cukup Puas')}>
                         <span className='text-5xl'>🙂</span>
                         <span className='ml-1'>Cukup Puas</span>
                     </ButtonMasukan>
                     <ButtonMasukan 
-                        className='bg-green-600 hover:bg-green-700 hover:scale-105 transition-transform duration-50 mx-2 w-72 flex justify-center shadow-2xl border-b-4 border-r-4 border-black rounded-2xl border-gray-800'
+                        className='bg-green-600 hover:bg-green-700 hover:scale-105 transition-transform duration-50 mx-2 w-72 flex justify-center shadow-2xl border-b-4 border-r-4 border-gray-900 rounded-2xl'
                         onClick={() => handleButtonClick('Puas')}>
                         <span className='text-5xl'>😄</span>
                         <span className='ml-1'>Puas</span>
                     </ButtonMasukan>
                     <ButtonMasukan 
-                        className='bg-sky-600 hover:bg-sky-700 hover:scale-105 transition-transform duration-50 mx-2 w-72 flex justify-center shadow-2xl border-b-4 border-r-4 border-black rounded-2xl border-gray-800'
+                        className='bg-sky-600 hover:bg-sky-700 hover:scale-105 transition-transform duration-50 mx-2 w-72 flex justify-center shadow-2xl border-b-4 border-r-4 border-gray-900 rounded-2xl'
                         onClick={() => handleButtonClick('Sangat Puas')}>
                         <span className='text-5xl'>🤩</span>
                         <span className='ml-1'>Sangat Puas</span>
