@@ -13,8 +13,6 @@ export default function Welcome({ auth }) {
         });
     };
 
-    const imgUrl = `{ asset('img/logo.jpg') }`;
-
     return (
         <>
             <Head title="Welcome" />
@@ -38,8 +36,10 @@ export default function Welcome({ auth }) {
                         </>
                     )}
                 </div>
-                <div className='fixed top-52'>
-                    <img src={imageUrl} alt="Logo" />
+                <div className='fixed z-10 bottom-8'>
+                    <img src="/img/Logo-RS.png" className="opacity-80 w-24" alt="Logo" />
+                </div>
+                <div className='fixed top-24 z-20'>
                     <span className='text-2xl font-extrabold text-gray-700'>
                         MASUKAN ANDA SANGAT BERARTI BAGI KAMI
                     </span>
@@ -47,7 +47,7 @@ export default function Welcome({ auth }) {
                         🙏🏻
                     </span>
                 </div>
-                <div className='flex items-center'>
+                <div className='flex items-center z-30'>
                     <ButtonMasukan 
                         className='bg-red-600 hover:bg-red-700 hover:scale-105 transition-transform duration-50 mx-2 w-72 flex justify-center shadow-2xl border-b-4 border-r-4 border-gray-900 rounded-2xl'
                         onClick={() => handleButtonClick('Tidak Puas')}>
