@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MasukanExport;
 use Illuminate\Http\Request;
 use App\Models\Masukan;
 use Inertia\Inertia;
 use Carbon\Carbon;
+use Excel;
 use Alert;
 
 class MasukanController extends Controller
@@ -52,6 +54,11 @@ class MasukanController extends Controller
         $cukupPuas = $masukan->where('tanggapan', 'Cukup Puas')->count();
         $puas = $masukan->where('tanggapan', 'Puas')->count();
         $sangatPuas = $masukan->where('tanggapan', 'Sangat Puas')->count();
+        
+        session([
+            'tanggal_awal' => $tanggalAwal,
+            'tanggal_akhir' => $tanggalAkhir,
+        ]);
 
         return Inertia::render('Dashboard', [
             'masukan' => $masukan,
@@ -61,6 +68,28 @@ class MasukanController extends Controller
             'sangatPuas' => $sangatPuas,
             'tanggal_awal' => $tanggalAwal,
             'tanggal_akhir' => $tanggalAkhir,
-        ]);
+        ])->with(['session' => session()->all()]);
     }
+
+    public function cetak (Request $request) {
+        // Ambil tanggal awal dan akhir dari session
+        $tanggalAwal = session('tanggal_awal');
+        $tanggalAkhir = session('tanggal_akhir');
+
+        $query = Masukan::query();
+
+        if ($tanggalAwal && $tanggalAkhir) {
+            $endOfDay = Carbon::createFromFormat('Y-m-d', $tanggalAkhir)->endOfDay();
+
+            $query->whereBetween('created_at', [
+                $tanggalAwal,
+                $endOfDay,
+            ]);
+        }
+
+        $masukan = $query->get();
+        session(['cetak_excel' => $masukan]);
+        return Excel::download(new MasukanExport, 'Masukan.xlsx');
+    }
+
 }

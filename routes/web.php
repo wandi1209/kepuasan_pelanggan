@@ -19,6 +19,7 @@ use Inertia\Inertia;
 
 Route::get('/', [MasukanController::class, 'index'])->name('welcome');
 Route::get('/dashboard', [MasukanController::class, 'dashboard'])->name('dashboard')->middleware(['auth', 'verified']);
+Route::get('/dashboard/export', [MasukanController::class, 'cetak'])->name('export.excel');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

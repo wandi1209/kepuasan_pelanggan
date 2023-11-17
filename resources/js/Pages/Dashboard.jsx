@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Dashboard({ auth, masukan, tidakPuas, cukupPuas, puas, sangatPuas, tanggalAwal, tanggalAkhir }) {
+export default function Dashboard({ auth, masukan, tidakPuas, cukupPuas, puas, sangatPuas }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -20,9 +20,7 @@ export default function Dashboard({ auth, masukan, tidakPuas, cukupPuas, puas, s
                                         <input
                                             type="date"
                                             name="tanggal_awal"
-                                            value={tanggalAwal}
-                                            onChange={(e) => setTanggalAwal(e.target.value)}
-                                            className="border p-2 mr-4 rounded-xl ml-2 bg-gray-200"
+                                            className="border p-2 mr-4 rounded-md ml-2 bg-gray-200"
                                         />
                                     </div>
                                     <div className='ml-12'>
@@ -30,12 +28,22 @@ export default function Dashboard({ auth, masukan, tidakPuas, cukupPuas, puas, s
                                         <input
                                             type="date"
                                             name="tanggal_akhir"
-                                            value={tanggalAkhir}
-                                            onChange={(e) => setTanggalAkhir(e.target.value)}
-                                            className="border p-2 rounded-xl ml-2 bg-gray-200"
+                                            className="border p-2 rounded-md ml-2 bg-gray-200"
                                         />
                                     </div>
-                                <button type="submit" className="bg-blue-600 hover:bg-blue-700 hover:scale-105 transition-transform duration-200 text-white p-2 ml-6 rounded-xl shadow-xl">Terapkan Filter</button>
+                                    <button type="submit" className="bg-blue-600 hover:bg-blue-700 hover:scale-105 transition-transform duration-200 text-white p-2 mx-6 rounded-lg shadow-xl">Terapkan Filter</button>
+                                    <button 
+                                type="button" 
+                                className="inline-flex bg-green-700 hover:bg-green-800 mr-2 hover:scale-105 transition-transform duration-200 text-white p-2 rounded-lg shadow-xl"
+                                onClick={() => window.location.href = route('export.excel')}    
+                            >
+                                <span className='material-symbols-outlined'>
+                                    print
+                                </span>
+                                <span className='ml-2'>
+                                    Cetak Excel
+                                </span>
+                            </button>
                                 </div>
                             </form>
                         </div>
